@@ -43,9 +43,12 @@ https://tahprpe7ixyrlnde7kccfiewj40afjyi.lambda-url.ap-northeast-3.on.aws/?ZipCo
 ## 郵便番号データ作成ユーティリティ
 
 このユーティリティはlambdaサービスで使用する郵便番号データファイル(001.JSON〜999.JSON)を作成するものです。
-
+ユーティリティ実行前に、
 [郵便番号住所データダウンロードページ](https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html)から
-[全国一括](https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip)のリンクをクリックしてken_all.zip
-[事業所郵便番号データダウンロードページ](https://www.post.japanpost.jp/zipcode/dl/jigyosyo/index-zip.html)
-[最新データのダウンロード](https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip)
+[全国一括](https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip)のリンクをクリックしてダウンロードしたken_all.zipを解凍して
+出てきたKEN_ALL.CSVと、
+[事業所郵便番号データダウンロードページ](https://www.post.japanpost.jp/zipcode/dl/jigyosyo/index-zip.html)から
+[最新データのダウンロード](https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip)のリンクをクリックしてダウンロードしたjigyosho.zipを解凍して
+出てきたJIGYOSHO.CSVをダウンロードフォルダに保存しておきます。
+
 ＃＃python郵政省が公開している郵便番号データから郵便番号→住所の変換モジュールを作ってみました
