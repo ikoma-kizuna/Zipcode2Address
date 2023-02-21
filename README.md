@@ -9,7 +9,7 @@ lambdaサービスで使用するデータを用意するのがWindows上の郵�
 ## lambdaサービス
 
 このサービスは郵便番号をパラメータとして
-https://tahprpe7ixyrlnde7kccfiewj40afjyi.lambda-url.ap-northeast-3.on.aws/?ZipCode=1000001
+<https://tahprpe7ixyrlnde7kccfiewj40afjyi.lambda-url.ap-northeast-3.on.aws/?ZipCode=1000001>
 のように呼び出すと、対応する住所をjson形式で
 [
   [
