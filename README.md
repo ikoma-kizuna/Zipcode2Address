@@ -52,4 +52,8 @@ https://tahprpe7ixyrlnde7kccfiewj40afjyi.lambda-url.ap-northeast-3.on.aws/?ZipCo
 [最新データのダウンロード](https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip)のリンクをクリックしてダウンロードしたjigyosho.zipを解凍して
 出てきたJIGYOSHO.CSVをダウンロードフォルダに保存しておきます。
 
+この２つのファイルの内容についてはそれぞれ、
+[住所ファイルの説明](https://www.post.japanpost.jp/zipcode/dl/readme.html)
+[事業所ファイルの説明](https://www.post.japanpost.jp/zipcode/dl/jigyosyo/readme.html)
+に説明されています。
 ＃＃python郵政省が公開している郵便番号データから郵便番号→住所の変換モジュールを作ってみました
