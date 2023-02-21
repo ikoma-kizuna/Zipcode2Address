@@ -43,6 +43,7 @@ https://tahprpe7ixyrlnde7kccfiewj40afjyi.lambda-url.ap-northeast-3.on.aws/?ZipCo
 ## 郵便番号データ作成ユーティリティ
 
 このユーティリティはlambdaサービスで使用する郵便番号データファイル(001.JSON〜999.JSON)を作成するものです。
+
 ユーティリティ実行前に、
 [郵便番号住所データダウンロードページ](https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html)から
 [全国一括](https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip)のリンクをクリックしてダウンロードしたken_all.zipを解凍して
