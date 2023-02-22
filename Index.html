@@ -1,97 +1,47 @@
 <!DOCTYPE html>
 <html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="HandheldFriendly" content="True" />
+        <title>第１８実験施設</title>
+        <link rel="icon" href="./ICON.svg" type="image/svg" sizes="any">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js" integrity="sha512-wS6VWtjvRcylhyoArkahZUkzZFeKB7ch/MHukprGSh1XIidNvHG1rxPhyFnL73M0FC1YXPIXLRDAoOyRJNni/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+        <script src="./GetAddress.js"></script>    
+    </head>
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="HandheldFriendly" content="True" />
-	<title>第１８実験施設</title>
-	<link rel="icon" href="favicon.ico" type="image/png">
-	<!--
-    <link rel="canonical" href="サイトURL">
-	<link rel="stylesheet" href="CSSのURL">
-    -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js" integrity="sha512-wS6VWtjvRcylhyoArkahZUkzZFeKB7ch/MHukprGSh1XIidNvHG1rxPhyFnL73M0FC1YXPIXLRDAoOyRJNni/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
-    <script>
-        "use strict";
-        function Zip2Address() {
-            var ZipControl = document.getElementById('ZipCode');
-            var AddressControl = document.getElementById('Address');
-            if ((ZipControl != null) && (AddressControl != null)) {
-                AddressControl.value = '';
-                var ZipCode = ZipControl.value;
-                if (ZipCode.match(/^\d{7}$/) == null) {
-                    alert("'" + ZipCode + "'は郵便番号ではありません。");
-                    return;
-                }
-                var option = {
-                    method: 'GET',
-                    params: { 'ZipCode': ZipCode }
-                };
-                axios.get('https://tahprpe7ixyrlnde7kccfiewj40afjyi.lambda-url.ap-northeast-3.on.aws', option)
-                    .then(function (response) {
-                        let Address = '';
-                        if (response.data.length == 1) {
-                            for (let Elem in response.data[0]) Address += response.data[0][Elem]; 
-                        }
-                        else {
-                            for (let i = 0; i < response.data.length; i++)
-                            {
-                                let Line = response.data[i];
-
-                                if (Address != '') Address += '\n'; 
-                                for (let j = 0; j < Line.length; j++) Address += Line[j]; 
-                            }
-                        };
-                        AddressControl.value = Address;
-                })
-                ["catch"]
-                (function (error) {
-                    ZipControl.value = '';
-                    alert(error.response.data);
-                });
-            }
-        }
-    </script>
-</head>
-
-<img>
-    <header class="site-header sticky-top py-1">
-        <nav class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2" href="#" aria-label="Product">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-            </a>
-        </nav>
-    </header>
-    <section>
-        <article>このサイトは今までに私が作ったものを展示する場所です</article>
-        <div class="row">
-            <div class="card col-3" style="width: 18rem;">
-                <img src="kenkyu_man.png" class="img-fluid" alt="実験施設">
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="Postal_Mark_(Japan).svg" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">郵便番号表示デモ</h3>
-                    <p class="card-text">これは郵便番号を入力して対応する住所を検索するデモです。AWSのS3及びLambdaサービスを使って、C#とPython,JavaScriptで作りました。</p>
-                    <form>
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-1">〒</label>
-                                <input type="text" class="col-5" value="9999999" id="ZipCode">
-                                <button type="button" class="btn btn-outline-primary btn-block col-5" id="AddressEntry" onclick="Zip2Address();">住所検索</button>
-                            </div>
-                            <textarea class="form-control" id="Address" rows="3"></textarea>  
-                        </div>                      
-                    </form>
+    <body>
+        <header class="site-header sticky-top py-1">
+            <nav class="container d-flex flex-column flex-md-row justify-content-between"></nav>
+        </header>
+        <section>
+            <article>このサイトは今までに私が作ったものを展示する場所です</article>
+            <div class="row">
+                <div class="card col-3" style="width: 18rem;">
+                    <img src="./kenkyu_man.png" class="img-fluid" alt="実験施設">
                 </div>
-            </div>
-        </section>
-	<footer>
-		<small>&copy; 1960-2023 Yasuhiro Yamazaki</small>
-	</footer>
-</body>
-
+                <div class="card" style="width: 18rem;">
+                    <img src="./Postal_Mark_(Japan).svg" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title">郵便番号表示デモ</h3>
+                        <p class="card-text">これは郵便番号を入力して対応する住所を検索するデモです。AWSのS3及びLambdaサービスを使って、C#とPython,JavaScriptで作りました。</p>
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-1">〒</label>
+                                    <input type="text" class="col-5" value="9999999" id="ZipCode">
+                                    <button type="button" class="btn btn-outline-primary btn-block col-5" id="AddressEntry" onclick="Zip2Address();">住所検索</button>
+                                </div>
+                                <textarea class="form-control" id="Address" rows="3"></textarea>  
+                            </div>                      
+                        </form>
+                    </div>
+                </div>
+            </section>
+        <footer>
+            <small>&copy; 1960-2023 Yasuhiro Yamazaki</small>
+        </footer>
+    </body>
 </html>
